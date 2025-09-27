@@ -1,15 +1,11 @@
-import { headers } from "next/headers";
 import Link from "next/link";
-import type { Me, ExperienceItem, EducationItem } from "types/me";
+import type { Me, ExperienceItem, EducationItem } from "@/types/me";
 
 export default async function HomePage() {
-  const h = headers();
-  const host = h.get("x-forwarded-host") || h.get("host") || "localhost:3000";
-  const proto = h.get("x-forwarded-proto") || (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${proto}://${host}`;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/api/me`, { cache: "no-store" })
+    .catch(() => fetch("http://localhost:3000/api/me")); // fallback for dev
 
-  const res = await fetch(`${origin}/api/me`, { cache: "no-store" });
-  const me = await res.json() as Me;
+  const me = (await res.json()) as Me;
 
   return (
     <section className="space-y-10">
@@ -72,7 +68,7 @@ export default async function HomePage() {
                 <p className="opacity-70 text-sm">{job.period}</p>
               </div>
               <ul className="mt-3 list-disc list-inside space-y-1 opacity-90">
-                {job.highlights.map((h: string, i: number) => <li key={i}>{h}</li>)}
+                {job.highlights.map((h, i) => <li key={i}>{h}</li>)}
               </ul>
             </li>
           ))}
