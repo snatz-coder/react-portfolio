@@ -1,12 +1,7 @@
 import Link from "next/link";
-import type { Me, ExperienceItem, EducationItem } from "@/types/me";
+import { me } from "@/lib/me";
 
-export default async function HomePage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/api/me`, { cache: "no-store" })
-    .catch(() => fetch("http://localhost:3000/api/me")); // fallback for dev
-
-  const me = (await res.json()) as Me;
-
+export default function HomePage() {
   return (
     <section className="space-y-10">
       {/* HERO */}
@@ -58,7 +53,7 @@ export default async function HomePage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Experience</h2>
         <ul className="space-y-4">
-          {me.experience.map((job: ExperienceItem) => (
+          {me.experience.map((job) => (
             <li key={job.company} className="card">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                 <div>
@@ -79,7 +74,7 @@ export default async function HomePage() {
       <div className="card">
         <h2 className="text-xl font-semibold">Education</h2>
         <ul className="mt-3 space-y-2">
-          {me.education.map((e: EducationItem) => (
+          {me.education.map((e) => (
             <li key={e.school}>
               <p className="font-medium">{e.school}</p>
               <p className="opacity-80">{e.degree} • {e.years}</p>
