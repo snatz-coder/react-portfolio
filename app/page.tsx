@@ -1,103 +1,110 @@
-import Image from "next/image";
+import { headers } from "next/headers";
+import Link from "next/link";
 
-export default function Home() {
+export default async function HomePage() {
+  const h = headers();
+  const host = h.get("x-forwarded-host") || h.get("host") || "localhost:3000";
+  const proto = h.get("x-forwarded-proto") || (host.startsWith("localhost") ? "http" : "https");
+  const origin = `${proto}://${host}`;
+
+  const res = await fetch(`${origin}/api/me`, { cache: "no-store" });
+  const me = await res.json();
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section className="space-y-10">
+      {/* HERO */}
+      <div className="mt-8">
+        <p className="text-sm opacity-70">Angular → React (Next.js)</p>
+        <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight">
+          Hi, I’m <span className="text-sky-300">{me.name}</span>
+        </h1>
+        <p className="mt-4 max-w-2xl text-base md:text-lg opacity-90">
+          {me.summary}
+        </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a className="btn" href={`mailto:${me.email}`}>Email</a>
+          <a className="btn" href={me.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <Link className="btn" href="/playground">React Demos</Link>
+          <a className="btn" href="/Sujane_Natasha_Lopez_CV.pdf" download>Download CV</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* QUICK FACTS */}
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="card">
+          <h3 className="text-sm uppercase tracking-wide opacity-70">Location</h3>
+          <p className="mt-2">{me.location}</p>
+        </div>
+        <div className="card">
+          <h3 className="text-sm uppercase tracking-wide opacity-70">Contact</h3>
+          <p className="mt-2"><a className="underline" href={`mailto:${me.email}`}>{me.email}</a></p>
+          <p className="opacity-90">{me.phone}</p>
+        </div>
+        <div className="card">
+          <h3 className="text-sm uppercase tracking-wide opacity-70">Currently</h3>
+          <p className="mt-2">Building React/Next.js projects + geospatial POC (maps, tracking, offline queues).</p>
+        </div>
+      </div>
+
+      {/* SKILLS */}
+      <div className="card">
+        <h2 className="text-xl font-semibold">Skills</h2>
+        <SkillRow label="Languages" items={me.skills.languages} />
+        <SkillRow label="Frameworks" items={me.skills.frameworks} />
+        <SkillRow label="Data" items={me.skills.data} />
+        <SkillRow label="Tools" items={me.skills.tools} />
+        <SkillRow label="Other" items={me.skills.other} />
+      </div>
+
+      {/* EXPERIENCE */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Experience</h2>
+        <ul className="space-y-4">
+          {me.experience.map((job: any) => (
+            <li key={job.company} className="card">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-semibold">{job.title} — {job.company}</h3>
+                  <p className="opacity-80 text-sm">{job.location}</p>
+                </div>
+                <p className="opacity-70 text-sm">{job.period}</p>
+              </div>
+              <ul className="mt-3 list-disc list-inside space-y-1 opacity-90">
+                {job.highlights.map((h: string, i: number) => <li key={i}>{h}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* EDUCATION */}
+      <div className="card">
+        <h2 className="text-xl font-semibold">Education</h2>
+        <ul className="mt-3 space-y-2">
+          {me.education.map((e: any) => (
+            <li key={e.school}>
+              <p className="font-medium">{e.school}</p>
+              <p className="opacity-80">{e.degree} • {e.years}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function SkillRow({ label, items }: { label: string; items: string[] }) {
+  return (
+    <div className="mt-3">
+      <p className="text-sm uppercase tracking-wide opacity-70">{label}</p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {items.map((tag) => (
+          <span key={tag} className="rounded-xl bg-slate-800/70 px-3 py-1 text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
