@@ -1,27 +1,44 @@
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-html,
+@import "tailwindcss";
+
+
+html, body { height: 100%; }
+
+
 body {
-  height: 100%;
+  @apply bg-white text-slate-900 antialiased transition-colors duration-300;
 }
-body {
-  @apply bg-slate-950 text-slate-100 antialiased;
-}
-a {
-  @apply underline underline-offset-4 hover:no-underline;
-}
-.container {
-  @apply max-w-5xl mx-auto px-4;
-}
+
+a { @apply underline underline-offset-4 hover:no-underline; }
+
+.container { @apply max-w-5xl mx-auto px-4; }
+
+/* Components (light) */
 .card {
-  @apply rounded-2xl bg-slate-900/60 shadow-lg ring-1 ring-slate-800 p-6;
+  @apply rounded-2xl bg-white shadow-lg ring-1 ring-slate-200 p-6 transition-colors;
 }
+
 .btn {
-  @apply inline-flex items-center rounded-xl px-4 py-2 bg-slate-200 text-slate-900 hover:bg-white transition;
+  @apply inline-flex items-center rounded-xl px-4 py-2 bg-sky-600 text-white hover:bg-sky-700 transition;
 }
+
 .nav {
-  @apply sticky top-0 z-50 backdrop-blur bg-slate-950/50 border-b border-slate-800;
+  @apply sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200;
+}
+
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+.dark .card {
+  @apply bg-slate-900/60 ring-slate-800;
+}
+
+.dark .btn {
+  @apply bg-sky-500 hover:bg-sky-400 text-slate-900;
+}
+
+.dark .nav {
+  @apply bg-slate-950/50 border-slate-800;
 }
