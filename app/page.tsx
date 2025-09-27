@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import Link from "next/link";
+import type { Me, ExperienceItem, EducationItem } from "types/me";
 
 export default async function HomePage() {
   const h = headers();
@@ -8,7 +9,7 @@ export default async function HomePage() {
   const origin = `${proto}://${host}`;
 
   const res = await fetch(`${origin}/api/me`, { cache: "no-store" });
-  const me = await res.json();
+  const me = await res.json() as Me;
 
   return (
     <section className="space-y-10">
@@ -61,7 +62,7 @@ export default async function HomePage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Experience</h2>
         <ul className="space-y-4">
-          {me.experience.map((job: any) => (
+          {me.experience.map((job: ExperienceItem) => (
             <li key={job.company} className="card">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                 <div>
@@ -82,7 +83,7 @@ export default async function HomePage() {
       <div className="card">
         <h2 className="text-xl font-semibold">Education</h2>
         <ul className="mt-3 space-y-2">
-          {me.education.map((e: any) => (
+          {me.education.map((e: EducationItem) => (
             <li key={e.school}>
               <p className="font-medium">{e.school}</p>
               <p className="opacity-80">{e.degree} • {e.years}</p>
