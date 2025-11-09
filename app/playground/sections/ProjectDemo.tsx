@@ -1,5 +1,5 @@
 "use client";
-ß
+
 export default function ProjectDemo() {
   const projects = [
     {
