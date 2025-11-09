@@ -1,8 +1,6 @@
 import HooksDemo from './sections/HooksDemo'
 import ContextDemo from './sections/ContextDemo'
-import ZustandDemo from './sections/ZustandDemo'
-import FormDemo from './sections/FormDemo'
-import SuspenseDemo from './sections/SuspenseDemo'
+import ProjectDemo from './sections/ProjectDemo'
 
 export default function Playground() {
   return (
@@ -10,9 +8,8 @@ export default function Playground() {
       <h1 className="text-3xl font-bold">Playground</h1>
       <HooksDemo />
       <ContextDemo />
-      <ZustandDemo />
-      <FormDemo />
-      <SuspenseDemo />
+      <h1 className="text-3xl font-bold">Project</h1>
+      <ProjectDemo />
     </div>
   )
 }

@@ -6,9 +6,9 @@ export const me = {
   email: "snazlopez@gmail.com",
   linkedin: "https://linkedin.com/in/sujane-natasha-lopez",
   summary:
-    "Frontend developer with 6+ years building scalable web/mobile apps. Strong Angular background; pivoting to modern React/Next.js.",
+    "Frontend developer with 6+ years building scalable web/mobile apps. Strong Angular and React/Next.js background",
   skills: {
-    languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "PHP", "C/C++", "Swift", "Java"],
+    languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS/Tailwind", "PHP", "C/C++", "Swift"],
     frameworks: ["React", "Next.js", "Angular", "Ionic", "Node.js", "Laravel"],
     data: ["MongoDB", "MySQL"],
     tools: ["Git", "Docker", "Jira", "Bitbucket", "VS Code", "Figma"],
@@ -19,7 +19,7 @@ export const me = {
       company: "Clenergy EV Ltd",
       title: "Web Application Developer",
       location: "London, UK",
-      period: "Aug 2021 – Present",
+      period: "Aug 2021 – October 2025",
       highlights: [
         "Built driver app (Ionic) and admin web app (Angular) across UK & Europe",
         "Integrated Stripe embedded UI for subscriptions, payments, wallet management",

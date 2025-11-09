@@ -17,7 +17,7 @@ export default function HomePage() {
         <div className="mt-6 flex flex-wrap gap-3">
           <a className="btn" href={`mailto:${me.email}`}>Email</a>
           <a className="btn" href={me.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <Link className="btn" href="/playground">React Demos</Link>
+          <Link className="btn" href="/playground">Projects</Link>
           <a className="btn" href="/Sujane_Natasha_Lopez_CV.pdf" download>Download CV</a>
         </div>
       </div>
@@ -32,10 +32,6 @@ export default function HomePage() {
           <h3 className="text-sm uppercase tracking-wide opacity-70">Contact</h3>
           <p className="mt-2"><a className="underline" href={`mailto:${me.email}`}>{me.email}</a></p>
           <p className="opacity-90">{me.phone}</p>
-        </div>
-        <div className="card">
-          <h3 className="text-sm uppercase tracking-wide opacity-70">Currently</h3>
-          <p className="mt-2">Building React/Next.js projects + geospatial POC (maps, tracking, offline queues).</p>
         </div>
       </div>
 
