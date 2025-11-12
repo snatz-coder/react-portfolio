@@ -18,7 +18,7 @@ export default function HomePage() {
           <a className="btn" href={`mailto:${me.email}`}>Email</a>
           <a className="btn" href={me.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <Link className="btn" href="/playground">Projects</Link>
-          <a className="btn" href="/Sujane_Natasha_Lopez_CV.pdf" download>Download CV</a>
+          <a className="btn" href="/Sujane_Natasha_Lopez_CV (1).pdf" download>Download CV</a>
         </div>
       </div>
 
