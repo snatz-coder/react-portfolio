@@ -8,7 +8,7 @@ export default function ProjectDemo() {
         "A web app to monitor and manage EV chargers, including map view, filters, and user dashboards.",
       techStack: ["React", "Google Maps API"],
       github: "https://github.com/snatz-coder/evChargers",
-      liveDemo: "https://ev-chargers-5kmsy70l4-sujanes-projects.vercel.app",
+      liveDemo: "https://ev-chargers-nine.vercel.app/",
     },
   ];
 
