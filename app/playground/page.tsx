@@ -8,7 +8,7 @@ export default function Playground() {
       <h1 className="text-3xl font-bold">Playground</h1>
       <HooksDemo />
       <ContextDemo />
-      <h1 className="text-3xl font-bold">Project</h1>
+      <h1 className="text-3xl font-bold">Projects</h1>
       <ProjectDemo />
     </div>
   )
