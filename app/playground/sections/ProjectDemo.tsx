@@ -10,6 +10,14 @@ export default function ProjectDemo() {
       github: "https://github.com/snatz-coder/evChargers",
       liveDemo: "https://ev-chargers-nine.vercel.app/",
     },
+    {
+      title: "Chatbot",
+      description:
+        "A web app for chatting with an AI bot.",
+      techStack: ["React"],
+      github: "https://github.com/snatz-coder/simple-chat-with-bot-final",
+      liveDemo: "https://chat-ixpala6el-sujanes-projects.vercel.app",
+    },
   ];
 
   return projects.map((project) => (
