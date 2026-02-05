@@ -18,6 +18,14 @@ export default function ProjectDemo() {
       github: "https://github.com/snatz-coder/simple-chat-with-bot-final",
       liveDemo: "https://chat-ixpala6el-sujanes-projects.vercel.app",
     },
+    {
+      title: "Ecommerce",
+      description:
+        "An Ecommerce app.",
+      techStack: ["Angular", "Signals", "Signal ngrx store"],
+      github: "https://github.com/snatz-coder/ecommerce-angular-project",
+      liveDemo: "https://ecommerce-dawhx14qy-sujanes-projects.vercel.app",
+    },
   ];
 
   return projects.map((project) => (
