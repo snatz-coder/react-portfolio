@@ -3,6 +3,14 @@
 export default function ProjectDemo() {
   const projects = [
     {
+      title: "Ecommerce",
+      description:
+        "An Ecommerce app.",
+      techStack: ["Angular", "Signals", "NGRX  Signal Store"],
+      github: "https://github.com/snatz-coder/ecommerce-angular-project",
+      liveDemo: "https://ecommerce-1e6tw2zar-sujanes-projects.vercel.app",
+    },
+    {
       title: "EV Chargers Platform",
       description:
         "A web app to monitor and manage EV chargers, including map view, filters, and user dashboards.",
@@ -18,14 +26,7 @@ export default function ProjectDemo() {
       github: "https://github.com/snatz-coder/simple-chat-with-bot-final",
       liveDemo: "https://chat-ixpala6el-sujanes-projects.vercel.app",
     },
-    {
-      title: "Ecommerce",
-      description:
-        "An Ecommerce app.",
-      techStack: ["Angular", "Signals", "Signal ngrx store"],
-      github: "https://github.com/snatz-coder/ecommerce-angular-project",
-      liveDemo: "https://ecommerce-dawhx14qy-sujanes-projects.vercel.app",
-    },
+ 
   ];
 
   return projects.map((project) => (
